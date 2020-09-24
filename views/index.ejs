@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="top-fields">
+      <h4>International Sales Firm Retail Store</h4>
+
+      <form
+        class="file-form"
+        action="/"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <h6>Upload Records</h6>
+        <div>
+          <label for="file">Select csv file</label>
+          <input type="file" id="file" name="file" accept=".csv, text/csv" />
+        </div>
+        <button type="submit">Upload</button>
+      </form>
+      <div class="summery">
+        <h6>Data size <%= dataSize %></h6>
+        <p>20 items per page</p>
+        <a href="/profitable"><h6>View Top 5 Profitable items</h6></a>
+      </div>
+
+      <div class="pagination">
+        <form
+          action="/<%= pageNumber%>"
+          method="POST"
+          enctype="application/json"
+        >
+          <input
+            class="d-none"
+            type="number"
+            name="page"
+            value="<%= pageNumber%>"
+          />
+          <input class="d-none" type="text" name="type" value="prev" />
+          <button type="submit">Previous</button>
+        </form>
+        <p><%= pageNumber + 1%></p>
+        <form
+          action="/<%= pageNumber%>"
+          method="POST"
+          enctype="application/json"
+        >
+          <input
+            class="d-none"
+            type="number"
+            name="page"
+            value="<%= pageNumber%>"
+          />
+          <input class="d-none" type="text" name="type" value="next" />
+          <button>Next</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container bottom-fields">
+      <% dataList.forEach(function(details) { %>
+      <div class="row all-items align-items-start">
+        <div class="item item-1 col-6 col-md-4">
+          <h4>Order Date</h4>
+          <div><%= details['Order Date'] %></div>
+        </div>
+        <div class="item col-6 col-md-4">
+          <h4>Order Priority</h4>
+          <div><%= details['Order Priority'] %></div>
+        </div>
+        <div class="item col-6 col-md-4">
+          <h4>Units Sold</h4>
+          <div><%= details['Units Sold'] %></div>
+        </div>
+        <div class="item col-6 col-md-4">
+          <h4>Unit Price</h4>
+          <div><%= details['Unit Price'] %></div>
+        </div>
+        <div class="item col-6 col-md-4">
+          <h4>Total Cost</h4>
+          <div><%= details['Total Cost'] %></div>
+        </div>
+        <div class="item col-6 col-md-4">
+          <h4>Total Revenue</h4>
+          <div><%= details['Total Revenue'] %></div>
+        </div>
+        <div class="item col-6 col-md-4">
+          <h4>Item Type</h4>
+          <div><%= details['Item Type'] %></div>
+        </div>
+
+        <!-- 
+        <div class="item col-6 col-md-4">
+          <h4>Region</h4>
+          <div><%= details['Region'] %></div>
+        </div>
+        <div class="item col-6 col-md-4">
+          <h4>Country</h4>
+          <div><%= details['Country'] %></div>
+        </div>
+       
+        <div class="item col-6 col-md-4">
+          <h4>Sales Channel</h4>
+          <div><%= details['Sales Channel'] %></div>
+        </div>
+      
+        <div class="item col-6 col-md-4">
+          <h4>Order ID</h4>
+          <div><%= details['Order ID'] %></div>
+        </div>
+        <div class="item col-6 col-md-4">
+          <h4>Ship Date</h4>
+          <div><%= details['Ship Date'] %></div>
+        </div>
+        <div class="item col-6 col-md-4">
+          <h4>Unit Cost</h4>
+          <div><%= details['Unit Cost'] %></div>
+        </div>
+        <div class="item col-6 col-md-4">
+          <h4>Total Profit'</h4>
+          <div><%= details['Total Profit'] %></div>
+        </div> -->
+
+        <!-- <div><%= details.Region %></div> -->
+      </div>
+      <% }); %>
+    </div>
+  </body>
+</html>
