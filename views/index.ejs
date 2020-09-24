@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Retail Shop</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
   </head>
@@ -22,8 +22,19 @@
           <label for="file">Select csv file</label>
           <input type="file" id="file" name="file" accept=".csv, text/csv" />
         </div>
-        <button type="submit">Upload</button>
+        <button style="background: orange;" type="submit">Upload</button>
       </form>
+
+      <form
+        class="file-form"
+        action="/"
+        method="POST"
+        enctype="application/json"
+      >
+        <input class="d-none" type="text" name="delete" value="delete" />
+        <button type="submit">Clear Data</button>
+      </form>
+
       <div class="summery">
         <h6>Data size <%= dataSize %></h6>
         <p>20 items per page</p>
@@ -64,6 +75,10 @@
     </div>
 
     <div class="container bottom-fields">
+      <% if(dataList.length < 1) { %>
+        <h6 style="height:40vh; display: flex; justify-content: center; align-items: center;">No data</h6>
+      <% }%>
+
       <% dataList.forEach(function(details) { %>
       <div class="row all-items align-items-start">
         <div class="item item-1 col-6 col-md-4">

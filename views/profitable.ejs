@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Retail Shop</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
   </head>
   <body>
     <div class="top-fields">
-        <a href="/"><h4>Home</h4></a>
+        <a href="/"><h5>Back Home</h5></a>
         <h4>Total Profits: <%= profits %> </h4>
         <h6>Date range</h6>
         <form class="filter-form" action="/profitable" method="POST" enctype="application/json">
@@ -31,6 +31,9 @@
     </div>
 
     <div class="container bottom-fields">
+        <% if(dataList.length < 1) { %>
+            <h6 style="height:40vh; display: flex; justify-content: center; align-items: center;">No data</h6>
+          <% }%>
       <% dataList.forEach(function(details) { %>
       <div class="row all-items align-items-start">
 
