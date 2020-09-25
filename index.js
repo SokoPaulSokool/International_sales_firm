@@ -299,4 +299,7 @@ app.get("/profitable", (req, res) => {
   } catch (error) {}
 });
 
-app.listen(PORT);
+app.listen(PORT,()=>{
+console.log("Server is running on PORT: ",PORT);
+console.log("http://localhost:"+PORT);
+});
